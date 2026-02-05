@@ -1,10 +1,18 @@
+import dotenv from "dotenv";
 import express from "express";
+import { connectDB } from "./config/db.js";
 import notesRouter from "./router/notes-router.js";
+
+dotenv.config();
 
 const app = express();
 
-app.use("/api/notes", notesRouter);
+connectDB().then(() => {
+  const port = process.env.PORT || 3001;
 
-app.listen(3000, () => {
-  console.log("Sever started on PORT:3000");
+  app.use("/api/notes", notesRouter);
+
+  app.listen(port, () => {
+    console.log(`Sever started on PORT:${port}`);
+  });
 });
