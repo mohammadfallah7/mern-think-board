@@ -10,6 +10,7 @@ const app = express();
 connectDB().then(() => {
   const port = process.env.PORT || 3001;
 
+  app.use(express.json());
   app.use("/api/notes", notesRouter);
 
   app.listen(port, () => {
