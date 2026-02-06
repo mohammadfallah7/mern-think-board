@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { LucideLoader2 } from "lucide-react";
 
-const CreateTodo = () => {
+export const CreateTodo = () => {
   const [note, setNote] = useState({ title: "", content: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -73,5 +73,3 @@ const CreateTodo = () => {
     </div>
   );
 };
-
-export default CreateTodo;

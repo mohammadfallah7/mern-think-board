@@ -2,6 +2,7 @@ import { formatDate } from "date-fns";
 import { LucidePenBox, LucideTrash2 } from "lucide-react";
 import type { FC } from "react";
 import type { Note } from "../../types";
+import { Link } from "react-router";
 
 interface NoteCardProps {
   note: Note;
@@ -19,9 +20,9 @@ export const NoteCard: FC<NoteCardProps> = ({ note, onDeleteNote }) => {
             {formatDate(new Date(note.createdAt), "PP")}
           </span>
           <div className="card-actions justify-end">
-            <button className="btn btn-square">
+            <Link to={`/notes/${note._id}`} className="btn btn-square">
               <LucidePenBox className="size-4" />
-            </button>
+            </Link>
             <button
               className="btn btn-square"
               onClick={() => onDeleteNote(note._id)}

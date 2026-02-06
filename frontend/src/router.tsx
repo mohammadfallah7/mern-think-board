@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import CreateTodo from "./pages/create-todo";
+import { CreateTodo, TodoDetails } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -10,6 +10,10 @@ const router = createBrowserRouter([
   {
     path: "/create",
     Component: CreateTodo,
+  },
+  {
+    path: "/notes/:id",
+    Component: TodoDetails,
   },
 ]);
 
