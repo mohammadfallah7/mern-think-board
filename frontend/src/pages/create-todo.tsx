@@ -47,7 +47,7 @@ const CreateTodo = () => {
               onChange={(e) => setNote({ ...note, title: e.target.value })}
               placeholder="Note title..."
               type="text"
-              className="w-full border rounded-full py-2 px-5"
+              className="input w-full"
             />
           </div>
 
@@ -58,7 +58,7 @@ const CreateTodo = () => {
               value={note.content}
               onChange={(e) => setNote({ ...note, content: e.target.value })}
               placeholder="Write your note here..."
-              className="w-full h-36 border rounded-xl py-2 px-5"
+              className="input resize-none w-full h-28 rounded-lg py-2"
             />
           </div>
 
