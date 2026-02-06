@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import { connectDB } from "./config/db.js";
@@ -11,6 +12,7 @@ connectDB().then(() => {
   const port = process.env.PORT || 3001;
 
   app.use(express.json());
+  app.use(cors({ origin: "http://localhost:5173" }));
   app.use(rateLimiter);
   app.use("/api/notes", notesRouter);
 
