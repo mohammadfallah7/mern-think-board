@@ -11,8 +11,8 @@ export const NoteCard: FC<NoteCardProps> = ({ note }) => {
   return (
     <li className="card bg-base-200 shadow-sm">
       <div className="card-body">
-        <h2 className="card-title">{note.title}</h2>
-        <p className="font-thin">{note.content}</p>
+        <h2 className="card-title line-clamp-1">{note.title}</h2>
+        <p className="font-thin line-clamp-2">{note.content}</p>
         <div className="flex justify-between items-center">
           <span className="text-xs font-thin">
             {formatDate(new Date(note.createdAt), "PP")}
