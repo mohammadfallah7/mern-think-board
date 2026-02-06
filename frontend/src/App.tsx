@@ -1,8 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import { Header } from "./components";
-import type { Note, Response } from "./types";
 import toast from "react-hot-toast";
+import { Header, NoteCard } from "./components";
+import type { Note, Response } from "./types";
 
 const App = () => {
   const [notes, setNotes] = useState<Note[]>();
@@ -42,15 +42,17 @@ const App = () => {
   return (
     <main>
       <Header />
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {notes?.map((note) => (
-            <li key={note._id}>{note.title}</li>
-          ))}
-        </ul>
-      )}
+      <div className="container mx-auto px-3 my-8">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {notes?.map((note) => (
+              <NoteCard key={note._id} note={note} />
+            ))}
+          </ul>
+        )}
+      </div>
     </main>
   );
 };
