@@ -13,6 +13,8 @@
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
   "dependencies": {
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.36.2",
     "dotenv": "^17.2.3",
     "express": "^4.22.1",
     "mongoose": "^9.1.6"
