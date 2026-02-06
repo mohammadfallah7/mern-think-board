@@ -5,9 +5,10 @@ import type { Note } from "../../types";
 
 interface NoteCardProps {
   note: Note;
+  onDeleteNote: (noteId: string) => void;
 }
 
-export const NoteCard: FC<NoteCardProps> = ({ note }) => {
+export const NoteCard: FC<NoteCardProps> = ({ note, onDeleteNote }) => {
   return (
     <li className="card bg-base-200 shadow-sm">
       <div className="card-body">
@@ -21,7 +22,10 @@ export const NoteCard: FC<NoteCardProps> = ({ note }) => {
             <button className="btn btn-square">
               <LucidePenBox className="size-4" />
             </button>
-            <button className="btn btn-square">
+            <button
+              className="btn btn-square"
+              onClick={() => onDeleteNote(note._id)}
+            >
               <LucideTrash2 className="size-4 text-error" />
             </button>
           </div>

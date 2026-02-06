@@ -39,6 +39,29 @@ const App = () => {
     fetchNotes();
   }, []);
 
+  const handleDeleteNote = async (noteId: string) => {
+    const initialState = notes ? [...notes] : [];
+    setNotes(notes?.filter((n) => n._id !== noteId));
+
+    try {
+      await axios.delete(`http://localhost:3001/api/notes/${noteId}`);
+    } catch (error) {
+      setNotes(initialState);
+      if (error instanceof AxiosError) {
+        switch (error.response?.status) {
+          case 404:
+            toast.error("Note not found!");
+            break;
+          case 429:
+            toast.error("Too many requests");
+            break;
+        }
+      } else {
+        toast("An error occurred");
+      }
+    }
+  };
+
   return (
     <main>
       <Header />
@@ -48,7 +71,11 @@ const App = () => {
         ) : (
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {notes?.map((note) => (
-              <NoteCard key={note._id} note={note} />
+              <NoteCard
+                key={note._id}
+                note={note}
+                onDeleteNote={(noteId) => handleDeleteNote(noteId)}
+              />
             ))}
           </ul>
         )}
