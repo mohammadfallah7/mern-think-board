@@ -4,6 +4,7 @@ import express from "express";
 import { connectDB } from "./config/db.js";
 import rateLimiter from "./middleware/rate-limiter.js";
 import notesRouter from "./router/notes-router.js";
+import cors from "cors";
 
 dotenv.config();
 
